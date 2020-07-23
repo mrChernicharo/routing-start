@@ -16,7 +16,7 @@ export class ServerComponent implements OnInit {
 
   constructor(
     private serversService: ServersService,
-    private route: Router,
+    private router: Router,
     private currentRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -26,7 +26,10 @@ export class ServerComponent implements OnInit {
       .subscribe((params: Params) => {
         this.server = this.serversService.getServer(+params['id'])
     })
+  }
 
+  onEdit() {
+    this.router.navigate(['edit'], { relativeTo: this.currentRoute, queryParamsHandling: 'preserve'});
   }
 
 }
