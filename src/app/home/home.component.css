@@ -1,0 +1,6 @@
+button.btn-default {
+  margin: 0 10px;
+}
+button:last-child {
+  margin: 0;
+}
