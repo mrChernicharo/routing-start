@@ -15,28 +15,30 @@ import { ServerResolver } from "./servers/server/server-resolver.service";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'servers',
+  {
+    path: 'servers',
     // canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     component: ServersComponent,
     children: [
-      { path: ':id', component: ServerComponent, resolve: { server: ServerResolver }},
-      { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard]},
+      { path: ':id', component: ServerComponent, resolve: { server: ServerResolver } },
+      { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] },
     ]
   },
-  { path: 'users', component: UsersComponent,
+  {
+    path: 'users', component: UsersComponent,
     children: [
-      { path: ':id/:name', component: UserComponent}
+      { path: ':id/:name', component: UserComponent }
     ]
   },
   // { path: 'not-found', component: PageNotFoundComponent},
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'page not found!' } },
-  { path: '**', redirectTo: '/not-found'}
+  { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({
-  // imports: [RouterModule.forRoot(appRoutes)],
-  imports: [RouterModule.forRoot(appRoutes, {useHash: true})],
+  // imports: [RouterModule.forRoot(appRoutesg)],
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
